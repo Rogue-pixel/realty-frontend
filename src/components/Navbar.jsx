@@ -1,136 +1,90 @@
-import { useState, useEffect } from "react";
-import { Menu, X, Phone, MessageCircle } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { Menu, X, Phone, MessageCircle } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeMenu = () => setIsOpen(false);
-  const toggleMenu = () => setIsOpen(!isOpen);
 
-  // Prevent scrolling when mobile menu is open
+  // Lock body scroll when menu is open to prevent background scrolling
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-[9999] w-full bg-white/95 backdrop-blur-md border-b border-neutral-200">
-      {/* ── Persistent Top Bar Architecture ── */}
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        
-        {/* ── Logo Protection ── */}
-        <a
-          href="#"
-          onClick={closeMenu}
-          className="relative z-50 flex shrink-0 items-center gap-2"
-        >
-          <span className="font-serif text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl">
+    <>
+      {/* 1. TOP BAR (Always fixed at the very top, highest z-index) */}
+      <header className="fixed top-0 inset-x-0 h-16 z-[10000] bg-white border-b border-neutral-200 flex items-center justify-between px-4 sm:px-6">
+        <a href="#" onClick={closeMenu} className="flex items-center shrink-0">
+          <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-neutral-900">
             HEBBAL PROPERTIES
           </span>
         </a>
 
-        {/* ── Desktop Navigation ── */}
-        <div className="hidden items-center gap-8 md:flex">
-          <a
-            href="#properties"
-            className="font-sans text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
-          >
-            Properties
-          </a>
-          <a
-            href="#expertise"
-            className="font-sans text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
-          >
-            Services
-          </a>
-          <a
-            href="#testimonials"
-            className="font-sans text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
-          >
-            Testimonials
-          </a>
-          <a
-            href="#contact"
-            className="font-sans text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
-          >
-            Contact
-          </a>
-        </div>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide text-neutral-600">
+          <a href="#properties" className="hover:text-neutral-950 transition-colors">PROPERTIES</a>
+          <a href="#expertise" className="hover:text-neutral-950 transition-colors">EXPERTISE</a>
+          <a href="#contact" className="hover:text-neutral-950 transition-colors">CONTACT</a>
+        </nav>
 
-        {/* ── Hamburger / Close Toggle Button ── */}
+        {/* Mobile Hamburger Toggle */}
         <button
-          onClick={toggleMenu}
-          className="relative z-50 p-2 text-neutral-900 focus:outline-none md:hidden"
-          aria-label="Toggle Mobile Menu"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+          className="md:hidden p-2 -mr-2 text-neutral-900 focus:outline-none"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={28} strokeWidth={2} /> : <Menu size={28} strokeWidth={2} />}
         </button>
-      </div>
+      </header>
 
-      {/* ── Clean Mobile Drawer (Under the Bar) ── */}
-      <div
-        className={`fixed inset-x-0 bottom-0 top-16 z-[998] flex flex-col justify-between overflow-y-auto bg-white px-6 py-8 transition-all duration-300 md:hidden ${
-          isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+      {/* 2. MOBILE DRAWER (Sibling to header, slides in from right, solid white) */}
+      <div 
+        className={`fixed inset-0 top-16 z-[9999] bg-white flex flex-col justify-between px-6 py-8 transition-transform duration-300 ease-in-out md:hidden ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        {/* Navigation Links */}
-        <div className="flex flex-col space-y-6 pt-4">
-          <a
-            href="#properties"
-            onClick={closeMenu}
-            className="border-b border-neutral-100 pb-3 font-serif text-2xl text-neutral-900"
-          >
-            Properties
+        {/* Drawer Links */}
+        <nav className="flex flex-col gap-6 pt-4">
+          <a href="#properties" onClick={closeMenu} className="font-serif text-3xl text-neutral-900 border-b border-neutral-100 pb-4">
+            Properties & Land
           </a>
-          <a
-            href="#expertise"
-            onClick={closeMenu}
-            className="border-b border-neutral-100 pb-3 font-serif text-2xl text-neutral-900"
-          >
-            Services
+          <a href="#expertise" onClick={closeMenu} className="font-serif text-3xl text-neutral-900 border-b border-neutral-100 pb-4">
+            Services & Story
           </a>
-          <a
-            href="#testimonials"
-            onClick={closeMenu}
-            className="border-b border-neutral-100 pb-3 font-serif text-2xl text-neutral-900"
-          >
-            Testimonials
+          <a href="#testimonials" onClick={closeMenu} className="font-serif text-3xl text-neutral-900 border-b border-neutral-100 pb-4">
+            Client Reviews
           </a>
-          <a
-            href="#contact"
-            onClick={closeMenu}
-            className="border-b border-neutral-100 pb-3 font-serif text-2xl text-neutral-900"
-          >
-            Contact
+          <a href="#contact" onClick={closeMenu} className="font-serif text-3xl text-neutral-900 border-b border-neutral-100 pb-4">
+            Bhoopasandra Office
           </a>
-        </div>
+        </nav>
 
-        {/* Bottom Action Buttons */}
-        <div className="mb-4 mt-8 flex flex-col gap-4 pb-4">
+        {/* Drawer Footer Actions */}
+        <div className="flex flex-col gap-3 pb-8">
           <a
-            href="tel:+919972378896"
-            onClick={closeMenu}
-            className="flex min-h-[56px] w-full items-center justify-center gap-2 rounded-full bg-neutral-900 font-sans text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-neutral-800"
+            href="tel:+919876543210"
+            className="w-full h-14 flex items-center justify-center gap-2 bg-neutral-900 text-white text-sm font-semibold tracking-wider uppercase rounded-full shadow-sm"
           >
-            <Phone className="h-4 w-4" />
-            Call Hebbal Properties
+            <Phone size={18} /> Call Office
           </a>
           <a
-            href="https://wa.me/919972378896"
-            onClick={closeMenu}
-            className="flex min-h-[56px] w-full items-center justify-center gap-2 rounded-full border border-neutral-900 bg-white font-sans text-xs font-bold uppercase tracking-widest text-neutral-900 transition-colors hover:bg-neutral-50"
+            href="https://wa.me/919876543210"
+            target="_blank"
+            rel="noreferrer"
+            className="w-full h-14 flex items-center justify-center gap-2 border border-neutral-300 text-neutral-900 text-sm font-semibold tracking-wider uppercase rounded-full hover:bg-neutral-50"
           >
-            <MessageCircle className="h-4 w-4" />
-            WhatsApp Inquiry
+            <MessageCircle size={18} /> WhatsApp Inquiry
           </a>
         </div>
       </div>
-    </header>
+    </>
   );
 }
