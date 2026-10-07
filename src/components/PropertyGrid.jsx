@@ -79,17 +79,7 @@ export default function PropertyGrid() {
   return (
     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {DUMMY_PROPERTIES.map((prop) => (
-        <PropertyCard
-          key={prop.id}
-          image={prop.image}
-          price={prop.price}
-          title={prop.title}
-          address={prop.address}
-          type={prop.type}
-          category={prop.category}
-          approval={prop.approval}
-          specs={prop.specs}
-        />
+        <PropertyCard key={prop.id} data={prop} />
       ))}
     </div>
   );

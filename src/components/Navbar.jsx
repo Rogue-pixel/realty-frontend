@@ -20,7 +20,7 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <nav className="sticky top-0 z-[999] w-full border-b border-neutral-200/80 bg-white/95 backdrop-blur-md">
+    <header className="fixed top-0 inset-x-0 z-[9999] w-full bg-white/95 backdrop-blur-md border-b border-neutral-200">
       {/* ── Persistent Top Bar Architecture ── */}
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         
@@ -114,7 +114,7 @@ export default function Navbar() {
         {/* Bottom Action Buttons */}
         <div className="mb-4 mt-8 flex flex-col gap-4 pb-4">
           <a
-            href="tel:+919876543210"
+            href="tel:+919972378896"
             onClick={closeMenu}
             className="flex min-h-[56px] w-full items-center justify-center gap-2 rounded-full bg-neutral-900 font-sans text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-neutral-800"
           >
@@ -122,7 +122,7 @@ export default function Navbar() {
             Call Hebbal Properties
           </a>
           <a
-            href="https://wa.me/919876543210"
+            href="https://wa.me/919972378896"
             onClick={closeMenu}
             className="flex min-h-[56px] w-full items-center justify-center gap-2 rounded-full border border-neutral-900 bg-white font-sans text-xs font-bold uppercase tracking-widest text-neutral-900 transition-colors hover:bg-neutral-50"
           >
@@ -131,6 +131,6 @@ export default function Navbar() {
           </a>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }

@@ -14,7 +14,7 @@ export default function ContactFooter({ id }) {
     const templateText = `Hello Hebbal Properties,\n\nI have a new inquiry from your website:\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Interest:* ${inquiryType}\n*Message:* ${message}`;
     
     const encodedMessage = encodeURIComponent(templateText);
-    window.open(`https://wa.me/919876543210?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/919972378896?text=${encodedMessage}`, "_blank");
 
     setIsSubmitted(true);
     setTimeout(() => {
@@ -58,7 +58,7 @@ export default function ContactFooter({ id }) {
               </div>
               
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919972378896"
                 target="_blank"
                 rel="noreferrer"
                 className="flex min-h-[56px] w-full items-center justify-center gap-3 rounded-full bg-white px-7 font-sans text-xs font-bold uppercase tracking-widest text-neutral-950 transition-colors hover:bg-neutral-200 sm:w-max lg:min-h-0 lg:py-3.5"

@@ -41,9 +41,9 @@ export default function BookSiteVisitModal({
 
 Looking forward to it!`;
 
-    // Replace 919876543210 with actual agent phone number
+    // Replace 919972378896 with actual agent phone number
     window.open(
-      `https://wa.me/919876543210?text=${encodeURIComponent(text)}`,
+      `https://wa.me/919972378896?text=${encodeURIComponent(text)}`,
       "_blank"
     );
   };

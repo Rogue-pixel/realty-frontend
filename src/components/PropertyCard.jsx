@@ -1,13 +1,14 @@
-export default function PropertyCard({
-  image,
-  price,
-  title,
-  address,
-  type = "residential", // "residential" | "land"
-  category,
-  approval,
-  specs,
-}) {
+export default function PropertyCard({ data }) {
+  const {
+    image,
+    price,
+    title,
+    address,
+    type = "residential", // "residential" | "land"
+    category,
+    approval,
+    specs,
+  } = data;
   return (
     <div className="group flex flex-col rounded-2xl border border-neutral-200/80 bg-white p-3 shadow-sm transition-shadow hover:shadow-md">
       
@@ -32,7 +33,8 @@ export default function PropertyCard({
         <img
           src={image}
           alt={title}
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          loading="lazy"
+          className="w-full aspect-[4/3] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
       </div>
 
