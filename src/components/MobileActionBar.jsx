@@ -6,7 +6,7 @@ export default function MobileActionBar() {
       
       {/* ── Call Now Trigger ── */}
       <a
-        href="tel:=+91919972378896"
+        href="tel:=+919972378896"
         className="flex h-14 flex-1 items-center justify-center gap-2 border-r border-neutral-200 bg-white font-sans text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 active:bg-neutral-100"
       >
         <Phone className="h-5 w-5" />

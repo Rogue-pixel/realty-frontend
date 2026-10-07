@@ -31,7 +31,7 @@ export default function BookSiteVisitModal({
 
   const handleWhatsApp = (e) => {
     e.preventDefault();
-    const text = `Hi! I'd like to schedule a site visit for *${propertyTitle}*.
+    const text = `Hi Waseem! I'd like to schedule a site visit for *${propertyTitle}*.
     
 *Name:* ${formData.name || "Not provided"}
 *Phone:* ${formData.phone || "Not provided"}
