@@ -1,0 +1,38 @@
+/* Google Fonts: Playfair Display (serif) + Inter (sans-serif) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap");
+
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────
+   Compass — Luxury Monochromatic Design System
+   ─────────────────────────────────────────────── */
+
+/* ── Tailwind v4 Theme Overrides ── */
+@theme {
+  /* Typography — two-font luxury system */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
+}
+
+/* ── Global Defaults ── */
+body {
+  @apply bg-white text-neutral-900 antialiased;
+  font-family: var(--font-sans);
+}
+
+/* ── Utility Resets ── */
+*,
+*::before,
+*::after {
+  @apply border-neutral-200;
+}
+
+/* ── Selection Colors (monochromatic) ── */
+::selection {
+  @apply bg-neutral-900 text-white;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
